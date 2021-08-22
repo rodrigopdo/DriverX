@@ -4,7 +4,7 @@ import theme from './theme.json'
 
 export const Container = styled.View `
   flex: 1;
-  background: ${(props) => props.color ? theme.colors[props.color] : 'transparent'};
+  background: ${(props) => props.color ? theme.colors[props.color] : '#FFF'};
   flex-direction: ${(props) => (props.row ? 'row' : 'column')};
   justify-content: ${(props) => props.justify || 'center'}; /*shorter with 2 pipes*/
   padding: ${(props) => props.padding || 0}px;
@@ -26,7 +26,7 @@ export const Button = styled.TouchableOpacity `
 
 export const ButtonText = styled.Text `
   text-align: center;
-  color: ${(props) => (props.color ? theme.colors[props.color] : '#000')};
+ color: ${(props) => (props.color ? theme.colors[props.color] : '#000')};
 `;
 
 export const Title = styled.Text `
@@ -40,4 +40,28 @@ export const SubTitle = styled.Text `
   opacity: 0.7;
   font-weight: ${(props) => props.bold ? 'bold' : 'normal'};
   color: ${(props) => props.color ? theme.colors[props.color] : theme.colors.dark};
+`;
+
+export const PickerButton = styled.TouchableOpacity `
+  width: 100%;
+  height: 40%;
+  margin-top: 2.5%;
+  border-width: 3px;
+  border-style: solid;
+  justify-content: space-around;
+  align-items: center;
+  border-color: ${props => props.active ? theme.colors.primary : theme.colors.muted50};
+  background-color: ${props => props.active ? theme.colors.primary + '80' : theme.colors.muted50};
+`;
+
+export const Input = styled.TextInput `
+  background-color: ${theme.colors.light};
+  border: 1px solid ${theme.colors.muted};
+  width: 100%;
+  padding: 7px 15px;
+`;                                  
+
+export const Spacer = styled.View `
+  width: ${(props) => props.width || '100%'};
+  height: ${(props) => props.height || 10}px;
 `;
