@@ -1,30 +1,51 @@
-import React from 'react';
-import { CreditCardInput } from 'react-native-credit-card-input';
+import React, { useState, useEffect } from 'react';
+import { Keyboard } from 'react-native';
+import { CreditCardInput } from 'react-native-credit-card-input-view';
 import { 
   Container, 
   Button, 
   ButtonText, 
   Title, 
-  SubTitle
+  SubTitle,
+  Spacer
 } from '../../styles';
 
 const Payment = () => {
+
+ const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+  const keyboardDidShowListener = Keyboard.addListener(
+    'keyboardDidShow',
+    () => setVisible(false),
+  );
+  const keyboardDidHideListener = Keyboard.addListener(
+    'keyboardDidHide',
+    () => setVisible(true),
+  );
+  return () => {
+    keyboardDidShowListener.remove();
+    keyboardDidHideListener.remove();
+  };
+
+  }, [])
   return (
     <Container padding={30} justify="flex-start" color="light">
       <Container align="flex-start" height={40}>
         <Title>Escolha como pagar</Title>
         <SubTitle>Preencha os dados do cartão de crédito</SubTitle>
       </Container>
-
       <Container>
-        <CreditCardInput />
+        <Spacer height={430} />
+        <CreditCardInput requiresName/>
       </Container>
-      
-      <Container height={70} justify="flex-end">
-        <Button>
-          <ButtonText>Comece a usar</ButtonText>
-        </Button>
-      </Container>
+      {visible && (
+        <Container height={70} justify="flex-end">
+          <Button>
+            <ButtonText>Próximo Passo</ButtonText>
+          </Button>
+        </Container>
+      )}
     </Container>
   )
 };

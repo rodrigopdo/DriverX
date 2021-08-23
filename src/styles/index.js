@@ -26,7 +26,7 @@ export const Button = styled.TouchableOpacity `
 
 export const ButtonText = styled.Text `
   text-align: center;
- color: ${(props) => (props.color ? theme.colors[props.color] : '#000')};
+  color: ${(props) => (props.color ? theme.colors[props.color] : '#000')};
 `;
 
 export const Title = styled.Text `
@@ -64,4 +64,11 @@ export const Input = styled.TextInput `
 export const Spacer = styled.View `
   width: ${(props) => props.width || '100%'};
   height: ${(props) => props.height || 10}px;
+`;
+
+export const AddressList = styled.FlatList `
+  flex: 1;
+  width: 100%;
+  /* padding-top: 10; */
+  background: #F90;
 `;
