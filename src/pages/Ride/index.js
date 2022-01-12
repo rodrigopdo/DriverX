@@ -10,7 +10,8 @@ import {
   Title, 
   SubTitle,
   Input,
-  AddressList
+  AddressList,
+  AddressItem
 } from '../../styles';
 
 
@@ -54,7 +55,15 @@ const Ride = () => {
           <Input placeholder="Destino"/>
         </Container>
         <Container>
-          <AddressList />
+          <AddressList 
+            data={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]} 
+            renderItem={({item, index}) => (
+              <AddressItem>
+                <SubTitle>Menlo Park</SubTitle>
+                <SubTitle small>Palo Alto, CA</SubTitle>
+              </AddressItem>
+            )}
+          />
         </Container>
       </Container>
 

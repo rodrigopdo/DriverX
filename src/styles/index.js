@@ -70,5 +70,9 @@ export const AddressList = styled.FlatList `
   flex: 1;
   width: 100%;
   /* padding-top: 10; */
-  background: #F90;
+`;
+
+export const AddressItem = styled.TouchableOpacity `
+  padding: 5px;
+  align-items: flex-start;
 `;
